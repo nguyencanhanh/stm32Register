@@ -1,0 +1,6 @@
+main.c:11:5:__io_putchar	1
+main.c:28:5:main	1
+main.c:49:6:StartDefaultTask	1
+main.c:59:6:StartDefaultTask2	1
+main.c:67:6:TIM4_IRQHandler	2
+main.c:73:6:USART1_IRQHandler	3

@@ -1,0 +1,2 @@
+../Core/Inc/LCD/LCD.c:3:6:LCD_Init	16	static
+../Core/Inc/LCD/LCD.c:14:6:LCD_PrintString	32	static

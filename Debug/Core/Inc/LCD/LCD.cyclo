@@ -1,0 +1,2 @@
+LCD.c:3:6:LCD_Init	1
+LCD.c:14:6:LCD_PrintString	3

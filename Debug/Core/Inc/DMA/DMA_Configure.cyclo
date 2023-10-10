@@ -1,0 +1,4 @@
+core_cm3.h:1511:22:__NVIC_EnableIRQ	2
+DMA_Configure.c:11:6:DMA_ConfigureADC	1
+DMA_Configure.c:21:6:DMA_ConfigureUART	1
+DMA_Configure.c:36:6:sendUART1DMA	2
