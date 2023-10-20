@@ -19,8 +19,8 @@ void UART_Configure(void){
 	/* UART configure */
 	USART1->BRR |= (39 << 4) | (1 << 0);
 	USART1->CR1 |= (1 << 2) | (1 << 3) | (1 << 5) ;
-	NVIC_EnableIRQ(USART1_IRQn);
-	NVIC_SetPriority(USART1_IRQn, 1);
+//	NVIC_EnableIRQ(USART1_IRQn);
+//	NVIC_SetPriority(USART1_IRQn, 1);
 	USART1->CR1 |= (1 << 13);
 }
 void UART_SendData(char* str){

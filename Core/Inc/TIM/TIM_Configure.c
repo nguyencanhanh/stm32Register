@@ -8,6 +8,8 @@
 #include "TIM_Configure.h"
 #include "stm32f1xx.h"
 
+#define UP  1
+#define DO  0
 void TIM2_Configure(uint16_t PSC, uint32_t ARR){
 	RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;
 	TIM2->PSC = PSC;

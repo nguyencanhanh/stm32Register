@@ -2,7 +2,7 @@
 "./Core/Inc/DMA/DMA_Configure.o"
 "./Core/Inc/GPIO/GPIO_Configure.o"
 "./Core/Inc/I2C/I2C_Configure.o"
-"./Core/Inc/LCD/LCD.o"
+"./Core/Inc/LCD/LiquidCrystal_I2C.o"
 "./Core/Inc/STM32F103.o"
 "./Core/Inc/TIM/PWM.o"
 "./Core/Inc/TIM/TIM_Configure.o"

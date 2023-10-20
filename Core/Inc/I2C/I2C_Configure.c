@@ -1,31 +1,45 @@
 #include"I2C_Configure.h"
 #include "stm32f1xx.h"
+void I2C_GPIO_Config(void) {
+    // Bật clock cho GPIOB
+    RCC->APB2ENR |= RCC_APB2ENR_IOPBEN;
+    RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;
+    AFIO->MAPR &= ~AFIO_MAPR_I2C1_REMAP; // Chọn chân mặc định
+    GPIOB->CRL |= (0xF << 24) | (0xF << 28);
+    GPIOB->BSRR = (uint32_t)GPIO_PIN_6 << 16U;
+}
+void I2C1_Configure(void){
+		RCC->APB1ENR |= RCC_APB1ENR_I2C1EN;
+	    I2C1->OAR1 |=(1<<14);
+	    I2C1->CR2 |= 36; // Đặt tần số là 36 MHz
+	    I2C1->CCR = 180; // Cài đặt CCR cho tốc độ 100kHz
+	    I2C1->TRISE = 37; // Cài đặt TRISE cho tốc độ 100kHz
+	    I2C1->CR1 |= I2C_CR1_PE; // Bật I2C
+}
+void I2C_WriteData(I2C_TypeDef *i2c, uint8_t slaveAddress, uint8_t *data, uint16_t dataSize) {
+    while (i2c->SR2 & I2C_SR2_BUSY);
+    // Bắt đầu quá trình truyền
+    i2c->CR1 |= I2C_CR1_START;
+    // Chờ cho tới khi quá trình truyền bắt đầu
+    while (!(i2c->SR1 & I2C_SR1_SB));
+    // Gửi địa chỉ slave và chế độ ghi
+    i2c->DR = (slaveAddress << 1) & 0xFE;
+    while (!(i2c->SR1 & (1<<1)));
+    volatile uint32_t temp = i2c->SR1;
+    temp = i2c->SR2;
+    (void)temp;
+    // Gửi dữ liệu
+    for (uint16_t i = 0; i < dataSize; ++i) {
+    	i2c->DR = data[i];
+        while (!(i2c->SR1 & I2C_SR1_TXE));
+    }
+    // Chờ cho tới khi byte transfer hoàn thành (BTF)
+    while (!(i2c->SR1 & I2C_SR1_BTF));
+    // Kết thúc truyền
+    i2c->CR1 |= I2C_CR1_STOP;
+}
 
-void I2C_Configure(I2C_TypeDef* I2Cx, uint8_t i2c, uint8_t speedI2C, uint8_t ack){
-	 RCC->APB1ENR |= 1<<(20+i2c);
-	 GPIOB->CRL &=0x00FFFFFF;
-	 GPIOB->CRL |= (15<<24)|(15<<28); // SCL
-	 if (ack==1) I2Cx->CR1 |=(1<<10);
-	 I2Cx->CR2 = (speedI2C&0x3F);
-	 I2Cx->CCR = speedI2C*5;
-	 I2Cx->CR1 |= I2C_CR1_PE;
-}
-void I2C_Start(I2C_TypeDef* I2Cx) {
-	I2Cx->CR1 |= I2C_CR1_START;
-    while (!(I2Cx->SR1 & I2C_SR1_SB));
-}
 
-void I2C_Stop(I2C_TypeDef* I2Cx) {
-	I2Cx->CR1 |= I2C_CR1_STOP;
-}
-void I2C_SendData(I2C_TypeDef* I2Cx, uint8_t str) {
-	while (!(I2Cx->SR1 & I2C_SR1_TXE));
-	I2Cx->DR = str;
-	while (!(I2Cx->SR1 & I2C_SR1_BTF));
-}
-void I2C_SendToLCD(I2C_TypeDef* I2Cx, uint8_t data, uint8_t control) {
-    I2C_SendData(I2Cx, (data & 0xF0) | control);
-    I2C_SendData(I2Cx, ((data << 4) & 0xF0) | control);
-}
+
 
 

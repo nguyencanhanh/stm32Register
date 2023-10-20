@@ -24,9 +24,10 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/stm32f103.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Core/Inc/TIM/TIM_Configure.h ../Core/Inc/UART/UART_Configure.h \
  ../Core/Inc/DMA/DMA_Configure.h ../Core/Inc/ADC/ADC_Configure.h \
+ ../Core/Inc/I2C/I2C_Configure.h ../Core/Inc/TIM/PWM.h \
+ ../Core/Inc/LCD/LiquidCrystal_I2C.h ../Core/Inc/FreeRTOSConfig.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
- ../Core/Inc/FreeRTOSConfig.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
@@ -69,9 +70,12 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/stm32f103.h \
 ../Core/Inc/UART/UART_Configure.h:
 ../Core/Inc/DMA/DMA_Configure.h:
 ../Core/Inc/ADC/ADC_Configure.h:
+../Core/Inc/I2C/I2C_Configure.h:
+../Core/Inc/TIM/PWM.h:
+../Core/Inc/LCD/LiquidCrystal_I2C.h:
+../Core/Inc/FreeRTOSConfig.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
-../Core/Inc/FreeRTOSConfig.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:

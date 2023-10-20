@@ -24,4 +24,6 @@ void RCC_Configure(){
 
 	RCC->CFGR |= (2 << 0);
 	while (!(RCC->CFGR & (2 << 2)));
+	RCC->APB2ENR |= (1<<0);
+	AFIO->MAPR |= (2 << 24);
 }

@@ -1,2 +1,4 @@
-../Core/Inc/LCD/LCD.c:3:6:LCD_Init	16	static
-../Core/Inc/LCD/LCD.c:14:6:LCD_PrintString	32	static
+../Core/Inc/LCD/LCD.c:7:6:LCD_SendCommand	16	static
+../Core/Inc/LCD/LCD.c:11:6:LCD_SendData	16	static
+../Core/Inc/LCD/LCD.c:15:6:LCD_Init	16	static
+../Core/Inc/LCD/LCD.c:32:6:LCD_Print	32	static

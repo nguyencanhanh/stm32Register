@@ -1,2 +1,4 @@
-LCD.c:3:6:LCD_Init	1
-LCD.c:14:6:LCD_PrintString	3
+LCD.c:7:6:LCD_SendCommand	1
+LCD.c:11:6:LCD_SendData	1
+LCD.c:15:6:LCD_Init	1
+LCD.c:32:6:LCD_Print	2

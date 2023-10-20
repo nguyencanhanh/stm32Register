@@ -5,13 +5,13 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Core/Inc/LCD/LCD.c 
+../Core/Inc/LCD/LiquidCrystal_I2C.c 
 
 OBJS += \
-./Core/Inc/LCD/LCD.o 
+./Core/Inc/LCD/LiquidCrystal_I2C.o 
 
 C_DEPS += \
-./Core/Inc/LCD/LCD.d 
+./Core/Inc/LCD/LiquidCrystal_I2C.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -21,7 +21,7 @@ Core/Inc/LCD/%.o Core/Inc/LCD/%.su Core/Inc/LCD/%.cyclo: ../Core/Inc/LCD/%.c Cor
 clean: clean-Core-2f-Inc-2f-LCD
 
 clean-Core-2f-Inc-2f-LCD:
-	-$(RM) ./Core/Inc/LCD/LCD.cyclo ./Core/Inc/LCD/LCD.d ./Core/Inc/LCD/LCD.o ./Core/Inc/LCD/LCD.su
+	-$(RM) ./Core/Inc/LCD/LiquidCrystal_I2C.cyclo ./Core/Inc/LCD/LiquidCrystal_I2C.d ./Core/Inc/LCD/LiquidCrystal_I2C.o ./Core/Inc/LCD/LiquidCrystal_I2C.su
 
 .PHONY: clean-Core-2f-Inc-2f-LCD
 
