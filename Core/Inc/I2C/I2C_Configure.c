@@ -3,13 +3,12 @@
 void I2C_GPIO_Config(void) {
     // Bật clock cho GPIOB
     RCC->APB2ENR |= RCC_APB2ENR_IOPBEN;
-    RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;
-    AFIO->MAPR &= ~AFIO_MAPR_I2C1_REMAP; // Chọn chân mặc định
-    GPIOB->CRL |= (0xF << 24) | (0xF << 28);
-    GPIOB->BSRR = (uint32_t)GPIO_PIN_6 << 16U;
+    GPIOB->CRL |= 0xFF000000;
 }
 void I2C1_Configure(void){
 		RCC->APB1ENR |= RCC_APB1ENR_I2C1EN;
+		I2C1->CR1 |= I2C_CR1_SWRST;
+		I2C1->CR1 &= ~I2C_CR1_SWRST;
 	    I2C1->OAR1 |=(1<<14);
 	    I2C1->CR2 |= 36; // Đặt tần số là 36 MHz
 	    I2C1->CCR = 180; // Cài đặt CCR cho tốc độ 100kHz

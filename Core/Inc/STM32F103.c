@@ -7,6 +7,10 @@
 #include "stm32f103.h"
 #include "stm32f1xx.h"
 
+void SystemInitAnh(void){
+	RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;
+	AFIO->MAPR |= AFIO_MAPR_SWJ_CFG;
+}
 void RCC_Configure(){
 	RCC->CR |= RCC_CR_HSEON;
 	while (!(RCC->CR & RCC_CR_HSERDY));
@@ -22,8 +26,7 @@ void RCC_Configure(){
 	RCC->CFGR |= (3 << 14); // chia ADC cho 6 = 9M
 	RCC->CR |= RCC_CR_PLLON;
 
+	while (!(RCC->CR & RCC_CR_PLLRDY));
 	RCC->CFGR |= (2 << 0);
 	while (!(RCC->CFGR & (2 << 2)));
-	RCC->APB2ENR |= (1<<0);
-	AFIO->MAPR |= (2 << 24);
 }

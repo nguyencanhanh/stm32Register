@@ -6,7 +6,7 @@
  */
 #ifndef INC_STM32F103_H_
 #define INC_STM32F103_H_
-
+void SystemInitAnh(void);
 void RCC_Configure(void);
 
 #endif /* INC_STM32F103_H_ */

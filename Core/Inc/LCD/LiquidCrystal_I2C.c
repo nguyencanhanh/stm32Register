@@ -8,7 +8,6 @@
 #include <stdarg.h>
 #include "LiquidCrystal_I2C.h"
 #include"I2C_Configure.h"
-//extern I2C_HandleTypeDef hi2c1;
 static void lcd_send_cmd (LiquidCrystal_I2C *lcd, uint8_t cmd)
 {
   uint8_t data_h, data_l;
@@ -44,7 +43,7 @@ void lcd_putchar(LiquidCrystal_I2C *lcd,uint8_t data)
 void lcd_clear_display (LiquidCrystal_I2C *lcd)
 {
 	lcd_send_cmd (lcd,LCD_CLEARDISPLAY);
-	HAL_Delay(1);
+	delay_ms2(1);
 }
 void lcd_display_off(LiquidCrystal_I2C *lcd) 
 {
@@ -131,13 +130,13 @@ void lcd_init (LiquidCrystal_I2C *lcd, uint8_t addr)
 	lcd->DisplayControl |= LCD_DISPLAYON | LCD_CURSOROFF | LCD_BLINKOFF;
 	lcd_send_cmd (lcd,0x33); 
 	lcd_send_cmd (lcd,0x32);
-	HAL_Delay(5);
+	delay_ms2(5);
 	lcd_send_cmd (lcd,LCD_CLEARDISPLAY); 
-	HAL_Delay(5);
+	delay_ms2(5);
 	lcd_send_cmd (lcd,0x0c); 	
-	HAL_Delay(5);
+	delay_ms2(5);
 	lcd_send_cmd (lcd,LCD_RETURNHOME); 
-	HAL_Delay(5);
+	delay_ms2(5);
 	lcd_send_cmd (lcd,LCD_SETDDRAMADDR);
 	lcd_set_cursor_blink_off(lcd);
 	lcd->Backlightval = LCD_BACKLIGHT;
